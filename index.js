@@ -14,6 +14,13 @@ addbtn.addEventListener("click", function () {
   }
 });
 
-allPriorityColor[0].addEventListener("click", function () {
-  allPriorityColor[0].classList.add("active");
-});
+for (let i = 0; i < allPriorityColor.length; i++) {
+  allPriorityColor[i].addEventListener("click", function () {
+    for (let j = 0; j < allPriorityColor.length; j++) {
+      if (allPriorityColor[j].classList.contains("active")) {
+        allPriorityColor[j].classList.remove("active");
+      }
+    }
+    allPriorityColor[i].classList.add("active");
+  });
+}
