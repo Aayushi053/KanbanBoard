@@ -3,8 +3,10 @@ let modal = document.querySelector(".modal-cont");
 let allPriorityColor = document.querySelectorAll(".priority-color");
 let textArea = document.querySelector(".textarea-cont");
 let mainCont = document.querySelector(".main-cont");
+let removeBtn = document.querySelector(".remove-btn");
 
 let addModal = true;
+let removeFlag = false;
 
 addbtn.addEventListener("click", function () {
   if (addModal) {
@@ -46,4 +48,21 @@ function createTicket() {
                         <div class="ticket-area">Detail of your task</div>`;
   console.log(ticketCont);
   mainCont.append(ticketCont);
+
+  //handle delete of ticket
+  ticketCont.addEventListener("click", function () {
+    if (removeFlag) {
+      ticketCont.remove();
+    }
+  });
 }
+
+removeBtn.addEventListener("click", function () {
+  if (removeFlag) {
+    removeBtn.style.color = "black";
+    removeFlag = false;
+  } else {
+    removeBtn.style.color = "red";
+    removeFlag = true;
+  }
+});
