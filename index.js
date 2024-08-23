@@ -4,6 +4,7 @@ let allPriorityColor = document.querySelectorAll(".priority-color");
 let textArea = document.querySelector(".textarea-cont");
 let mainCont = document.querySelector(".main-cont");
 let removeBtn = document.querySelector(".remove-btn");
+let allFilterColor = document.querySelectorAll(".color");
 
 let color = ["red", "blue", "green", "black"];
 let modalPriorityColor = "Black";
@@ -103,6 +104,30 @@ function createTicket(task) {
       lockUnlockBtn.classList.remove("fa-lock-open");
       lockUnlockBtn.classList.add("fa-lock");
       taskArea.setAttribute("contenteditable", "false");
+    }
+  });
+}
+
+for (let j = 0; j < allFilterColor.length; j++) {
+  allFilterColor[j].addEventListener("click", function () {
+    let allTicketsColor = document.querySelectorAll(".ticket-color");
+    let currentSelected = allFilterColor[j].classList[1];
+
+    for (let i = 0; i < allTicketsColor.length; i++) {
+      let currentTicketColor = allTicketsColor[i].classList[1];
+
+      if (currentSelected == currentTicketColor) {
+        allTicketsColor[i].parentElement.style.display = "block";
+      } else {
+        allTicketsColor[i].parentElement.style.display = "none";
+      }
+    }
+  });
+
+  allFilterColor[j].addEventListener("dblclick", function () {
+    let allTicketColor = document.querySelectorAll(".ticket-color");
+    for (let i = 0; i < allTicketColor.length; i++) {
+      allTicketColor[i].parentElement.style.display = "block";
     }
   });
 }
