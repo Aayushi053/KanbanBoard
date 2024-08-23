@@ -105,6 +105,7 @@
   height: 10rem;
   width: 15rem;
   background-color: antiquewhite;
+  position: relative;
 }
 
 .ticket-color {
@@ -125,4 +126,11 @@
 
 .active {
   border: 5px solid rgb(8, 225, 249);
+}
+
+.lock-unlock {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.25rem;
 }

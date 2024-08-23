@@ -57,7 +57,8 @@ function createTicket(task) {
   ticketCont.setAttribute("class", "ticket-cont");
   ticketCont.innerHTML = `<div class="ticket-color ${modalPriorityColor}"></div>
                         <div class="ticket-id">#${id}</div>
-                        <div class="ticket-area">${task}</div>`;
+                        <div class="ticket-area" contenteditable="false">${task}</div>
+                        <div class="lock-unlock"><i class="fa-solid fa-lock"></i></div>`;
   // console.log(ticketCont);
   mainCont.append(ticketCont);
 
@@ -87,6 +88,22 @@ function createTicket(task) {
     // console.log(nextColor);
     ticketColor.classList.remove(currColor);
     ticketColor.classList.add(nextColor);
+  });
+
+  //handle lock and unlock icon
+  let lockUnlockBtn = ticketCont.querySelector(".lock-unlock i");
+  let taskArea = ticketCont.querySelector(".ticket-area");
+  lockUnlockBtn.addEventListener("click", function () {
+    // console.log(lockUnlockBtn);
+    if (lockUnlockBtn.classList.contains("fa-lock")) {
+      lockUnlockBtn.classList.remove("fa-lock");
+      lockUnlockBtn.classList.add("fa-lock-open");
+      taskArea.setAttribute("contenteditable", "true");
+    } else {
+      lockUnlockBtn.classList.remove("fa-lock-open");
+      lockUnlockBtn.classList.add("fa-lock");
+      taskArea.setAttribute("contenteditable", "false");
+    }
   });
 }
 
