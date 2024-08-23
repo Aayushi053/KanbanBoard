@@ -134,3 +134,32 @@
   right: 10px;
   font-size: 1.25rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .toolbox-cont {
+    justify-content: center;
+  }
+  .toolbox-priority-cont {
+    margin-left: 0;
+  }
+  .modal-cont {
+    left: 0;
+    top: 30%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .toolbox-cont {
+    justify-content: space-around;
+  }
+  .toolbox-priority-cont,
+  .action-btn-cont {
+    margin-left: 0;
+  }
+  .modal-cont {
+    left: 0;
+    top: 30%;
+    width: 100%;
+  }
+}
