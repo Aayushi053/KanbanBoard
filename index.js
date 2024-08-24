@@ -5,6 +5,7 @@ let textArea = document.querySelector(".textarea-cont");
 let mainCont = document.querySelector(".main-cont");
 let removeBtn = document.querySelector(".remove-btn");
 let allFilterColor = document.querySelectorAll(".color");
+let actionBtn = document.querySelector(".action-btn-cont");
 
 let color = ["red", "blue", "green", "black"];
 let modalPriorityColor = "Black";
@@ -28,15 +29,45 @@ if (localStorage.getItem("tickets")) {
   }
 }
 
-addbtn.addEventListener("click", function () {
-  if (addModal) {
-    modal.style.display = "flex";
-    addModal = false;
-  } else {
-    modal.style.display = "none";
-    addModal = true;
+actionBtn.addEventListener("click", function (e) {
+  if (e.target.classList[1] == "fa-plus") {
+    if (addModal) {
+      modal.style.display = "flex";
+      addModal = false;
+    } else {
+      modal.style.display = "none";
+      addModal = true;
+    }
+  } else if (e.target.classList[1] == "fa-trash") {
+    if (removeFlag) {
+      removeBtn.style.color = "black";
+      removeFlag = false;
+    } else {
+      removeBtn.style.color = "red";
+      removeFlag = true;
+    }
   }
 });
+
+// addbtn.addEventListener("click", function () {
+//   if (addModal) {
+//     modal.style.display = "flex";
+//     addModal = false;
+//   } else {
+//     modal.style.display = "none";
+//     addModal = true;
+//   }
+// });
+
+// removeBtn.addEventListener("click", function () {
+//   if (removeFlag) {
+//     removeBtn.style.color = "black";
+//     removeFlag = false;
+//   } else {
+//     removeBtn.style.color = "red";
+//     removeFlag = true;
+//   }
+// });
 
 for (let i = 0; i < allPriorityColor.length; i++) {
   allPriorityColor[i].addEventListener("click", function () {
@@ -192,16 +223,6 @@ for (let j = 0; j < allFilterColor.length; j++) {
     }
   });
 }
-
-removeBtn.addEventListener("click", function () {
-  if (removeFlag) {
-    removeBtn.style.color = "black";
-    removeFlag = false;
-  } else {
-    removeBtn.style.color = "red";
-    removeFlag = true;
-  }
-});
 
 function updateLocalStorage() {
   let strArr = JSON.stringify(ticketArr);
